@@ -30,7 +30,7 @@ public class UserDao {
 		
 		try {
 			con = ds.getConnection();
-			String query = "select pw from LE_user where id = ?";
+			String query = "select pw from LectureEvaluation_user where id = ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -63,7 +63,7 @@ public class UserDao {
 		
 		try {
 			con = ds.getConnection();
-			String query = "insert into LE_user values (?, ?, ?, ?, 0)";
+			String query = "insert into LectureEvaluation_user Values(?, ?, ?, ?, 0)";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getId());
 			pstmt.setString(2, user.getPw());
@@ -93,7 +93,7 @@ public class UserDao {
 		
 		try {
 			con = ds.getConnection();
-			String query = "select email from LE_user where id = ?";
+			String query = "select email from LectureEvaluation_user where id = ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -122,7 +122,7 @@ public class UserDao {
 		
 		try {
 			con = ds.getConnection();
-			String query = "select emailChecked from LE_user where id = ?";
+			String query = "select emailChecked from LectureEvaluation_user where id = ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -150,7 +150,7 @@ public class UserDao {
 		
 		try {
 			con = ds.getConnection();
-			String query = "update LE_user set emailChecked = 1 where id = ?";
+			String query = "update LectureEvaluation_user set emailChecked = 1 where id = ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();

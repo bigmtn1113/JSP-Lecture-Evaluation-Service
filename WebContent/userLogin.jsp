@@ -31,13 +31,13 @@
 		</button>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="index.jsp">메인</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" href="#">회원관리</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown">
-						<a class="dropdown-item" href="userLogin.jsp">로그인</a>
+						<a class="dropdown-item active" href="userLogin.jsp">로그인</a>
 						<a class="dropdown-item" href="userJoin.jsp">회원가입</a>
 						<a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
 					</div>
@@ -54,11 +54,11 @@
 		<form action="userLoginAction.jsp" method="post">
 			<div class="form-group">
 				<label>아이디</label>
-				<input type="text" name="userId" class="form-control">
+				<input type="text" name="id" class="form-control">
 			</div>
 			<div class="form-group">
 				<label>비밀번호</label>
-				<input type="password" name="userPw" class="form-control">
+				<input type="password" name="pw" class="form-control">
 			</div>
 			<button type="submit" class="btn btn-primary">로그인</button>
 		</form>

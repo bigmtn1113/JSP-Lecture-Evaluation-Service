@@ -1,3 +1,5 @@
+<%@page import="user.UserDao"%>
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +17,35 @@
 <link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
+
+	<%
+		String id = null;
+	
+		if (session.getAttribute("id") != null)
+			id = (String) session.getAttribute("id");
+		
+		if (id == null) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>");
+			writer.println("alert('로그인을 해주세요.');");
+			writer.println("location.href='userLogin.jsp';");
+			writer.println("</script>");
+			writer.close();
+			return;
+		}
+		
+		UserDao userDao = new UserDao();
+		char emailChecked = userDao.getEmailChecked(id).charAt(0);
+		
+		if (emailChecked == '0') {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>");
+			writer.println("location.href='emailSendConfirm.jsp';");
+			writer.println("</script>");
+			writer.close();
+			return;
+		}
+	%>
 
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/popper.js"></script>
@@ -37,9 +68,18 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" href="#">회원관리</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown">
+					<%
+						if (id == null) {
+					%>
 						<a class="dropdown-item" href="userLogin.jsp">로그인</a>
 						<a class="dropdown-item" href="userJoin.jsp">회원가입</a>
-						<a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+					<%
+						} else {
+					%>
+						<a class="dropdown-item" href="userLogoutAction.jsp">로그아웃</a>
+					<%
+						}
+					%>
 					</div>
 				</li>
 			</ul>

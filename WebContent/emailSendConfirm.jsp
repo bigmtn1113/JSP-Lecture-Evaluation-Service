@@ -23,11 +23,11 @@
 		if (session.getAttribute("id") != null)
 			id = (String) session.getAttribute("id");
 		
-		if (id != null) {
+		if (id == null) {
 			PrintWriter writer = response.getWriter();
 			writer.println("<script>");
-			writer.println("alert('이미 로그인 된 상태입니다.');");
-			writer.println("location.href='index.jsp';");
+			writer.println("alert('로그인을 해주세요.');");
+			writer.println("location.href='userLogin.jsp';");
 			writer.println("</script>");
 			writer.close();
 			return;
@@ -58,7 +58,7 @@
 					<%
 						if (id == null) {
 					%>
-						<a class="dropdown-item active" href="userLogin.jsp">로그인</a>
+						<a class="dropdown-item" href="userLogin.jsp">로그인</a>
 						<a class="dropdown-item" href="userJoin.jsp">회원가입</a>
 					<%
 						} else {
@@ -78,17 +78,10 @@
 	</nav>
 	
 	<section class="container mt-3" style="max-width: 560px;">
-		<form action="userLoginAction.jsp" method="post">
-			<div class="form-group">
-				<label>아이디</label>
-				<input type="text" name="id" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>비밀번호</label>
-				<input type="password" name="pw" class="form-control">
-			</div>
-			<button type="submit" class="btn btn-primary">로그인</button>
-		</form>
+		<div class="alert alert-warning mt-4" role="alert">
+			이메일 주소 인증을 해야합니다.
+		</div>
+		<a href="emailSendAction.jsp" class="btn btn-primary">인증 메일 받기</a>
 	</section>
 	
 	<footer class="bg-dark mt-4 p-5 text-center" style="color: #ffffff;">

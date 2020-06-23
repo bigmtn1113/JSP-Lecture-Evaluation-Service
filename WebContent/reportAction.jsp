@@ -39,7 +39,7 @@
 		PrintWriter writer = response.getWriter();
 		writer.println("<script>");
 		writer.println("alert('입력하지 않은 항목이 있습니다.');");
-		writer.println("history.back()';");
+		writer.println("history.back();");
 		writer.println("</script>");
 		writer.close();
 		return;
